@@ -131,10 +131,8 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       if (valid) {
-        contactForm.style.display = 'none';
-        const success = document.getElementById('formSuccess');
-        if (success) success.style.display = 'block';
-      }
+    contactForm.submit(); // ✅ THIS FIXES EVERYTHING
+  }
     });
   }
 
