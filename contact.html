@@ -187,7 +187,12 @@
 </a>
 <script src="script.js"></script>
 <script>
-document.getElementById('sp').value = window.location.href;
+document.addEventListener("DOMContentLoaded", function() {
+  const sourceInput = document.getElementById("sp");
+  if (sourceInput) {
+    sourceInput.value = window.location.href;
+  }
+});
 </script>
 </body>
 </html>
