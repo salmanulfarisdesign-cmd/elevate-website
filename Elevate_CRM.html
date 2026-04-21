@@ -745,18 +745,88 @@ tbody td{padding:13px 16px;color:rgba(255,255,255,0.85);vertical-align:middle}
 <!-- ══ TOAST CONTAINER ══ -->
 <div id="toast"></div>
 
+<!-- Firebase SDK (compat version — works on GitHub Pages, no module isolation) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyAs2uVe2qWtVTx9i3vUshYGsZa3TKDb-tM",
+    authDomain: "elevate-crm-e8583.firebaseapp.com",
+    projectId: "elevate-crm-e8583",
+    storageBucket: "elevate-crm-e8583.firebasestorage.app",
+    messagingSenderId: "948107715058",
+    appId: "1:948107715058:web:deb6511a32d5d02f964b6b"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+  window._db = db;
+
+  // Real-time listener — auto-updates CRM when Firebase data changes
+  db.collection("leads").orderBy("dateAdded", "desc").onSnapshot((snapshot) => {
+    window._firebaseData = snapshot.docs.map(d => ({ _fbId: d.id, id: d.id, ...d.data() }));
+    const activePage = document.querySelector('.page-section.active')?.id?.replace('page-','');
+    if(activePage && typeof renderPage === 'function') renderPage(activePage);
+    // Update sidebar stats
+    const data = window._firebaseData;
+    const clients = data.filter(c=>c.stage==='active').length;
+    const mrr = data.filter(c=>c.stage==='active').reduce((a,c)=>a+(+c.value||0),0);
+    const sbLeads = document.getElementById('sb-leads');
+    const sbClients = document.getElementById('sb-clients');
+    const sbMrr = document.getElementById('sb-mrr');
+    if(sbLeads) sbLeads.textContent = data.filter(c=>{const d=new Date(c.dateAdded);return(Date.now()-d)/86400000<=30}).length;
+    if(sbClients) sbClients.textContent = clients;
+    if(sbMrr) sbMrr.textContent = '$'+mrr;
+  }, (error) => {
+    console.error("Firebase listener error:", error);
+  });
+
+  console.log("✅ Firebase Firestore connected - elevate-crm-e8583");
+</script>
+
 <script>
 // ══════════════════════════════════════════════════════
 // DATA LAYER — localStorage persistence
 // ══════════════════════════════════════════════════════
-const STORAGE_KEY = 'elevate_crm_v2';
 const SETTINGS_KEY = 'elevate_crm_settings';
 
+// Firebase data cache - updated by real-time listener
+window._firebaseData = [];
+
 function getData() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
-  catch { return []; }
+  return window._firebaseData || [];
 }
-function saveData(d) { localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); }
+
+async function saveLeadToFirebase(record) {
+  if(!window._db) { toast('Firebase not ready yet','error'); return; }
+  try {
+    if(record._fbId) {
+      await window._db.collection('leads').doc(record._fbId).set(record);
+    } else {
+      const docRef = await window._db.collection('leads').add(record);
+      record._fbId = docRef.id;
+    }
+  } catch(e) {
+    console.error('Firebase save error:', e);
+    toast('Save failed: ' + e.message, 'error');
+  }
+}
+
+async function deleteLeadFromFirebase(fbId) {
+  if(!window._db) return;
+  try {
+    await window._db.collection('leads').doc(fbId).delete();
+  } catch(e) {
+    console.error('Firebase delete error:', e);
+    toast('Delete failed', 'error');
+  }
+}
+
+// Legacy saveData - now saves to Firebase
+function saveData(d) {
+  console.warn('saveData called - migrated to Firebase');
+}
+
 function getSettings() {
   const defaults = {
     agencyName:'Elevate Digital Agency', owner:'Salman',
@@ -786,7 +856,10 @@ function seedDemo() {
     {id:genId(),name:'Rania Hassan',biz:'Rania Beauty Studio',biztype:'Salon / Beauty',phone:'+971507778899',email:'rania@studio.ae',source:'WhatsApp Button',service:'Social Media Management',stage:'new',priority:3,value:0,consultDate:'',lastContact:daysAgo(0),message:'Hello, I saw your website and want to know more about social media management.',notes:'',servicesActive:'',testimonial:'no',dateAdded:new Date().toISOString()},
     {id:genId(),name:'Carlos Mendez',biz:'El Sabor Restaurant',biztype:'Restaurant / Café',phone:'+971508889900',email:'carlos@elsabor.ae',source:'Instagram DM',service:'Local SEO',stage:'lost',priority:5,value:0,consultDate:'',lastContact:daysAgo(40),message:'Wanted SEO help but said budget was too tight.',notes:'Budget issue. Re-engage in 3 months.',servicesActive:'',testimonial:'no',dateAdded:daysAgo(95)},
   ];
-  saveData(demo);
+  // Save demo data to Firebase
+  demo.forEach(record => {
+    setTimeout(() => saveLeadToFirebase(record), 100);
+  });
 }
 
 // ══════════════════════════════════════════════════════
@@ -1206,12 +1279,12 @@ function editContact(id) {
   openModal('lead-modal');
 }
 
-function saveLead() {
+async function saveLead() {
   const name = document.getElementById('f-name').value.trim();
   if(!name) { toast('Please enter a name','error'); return; }
-  const data = getData();
   const record = {
     id: editingId || genId(),
+    _fbId: editingId || null,
     name,
     biz:       document.getElementById('f-biz').value.trim(),
     biztype:   document.getElementById('f-biztype').value,
@@ -1228,15 +1301,10 @@ function saveLead() {
     notes:          document.getElementById('f-notes').value.trim(),
     servicesActive: document.getElementById('f-services-active').value.trim(),
     testimonial:    document.getElementById('f-testimonial').value,
-    dateAdded: editingId ? (data.find(c=>c.id===editingId)?.dateAdded || new Date().toISOString()) : new Date().toISOString(),
+    dateAdded: editingId ? (getData().find(c=>c.id===editingId)?.dateAdded || new Date().toISOString()) : new Date().toISOString(),
   };
-  if(editingId) {
-    const idx = data.findIndex(c=>c.id===editingId);
-    if(idx>-1) data[idx] = record;
-  } else {
-    data.unshift(record);
-  }
-  saveData(data);
+  // Firebase handles storage - record is saved directly
+  await saveLeadToFirebase(record);
   closeModal('lead-modal');
   toast(editingId ? 'Contact updated ✓' : 'New lead added ✓');
   const activePage = document.querySelector('.page-section.active')?.id?.replace('page-','');
@@ -1297,24 +1365,23 @@ function viewContact(id) {
   openModal('view-modal');
 }
 
-function updateStage(id, newStage) {
+async function updateStage(id, newStage) {
   const data = getData();
   const c = data.find(x=>x.id===id);
   if(!c) return;
   c.stage = newStage;
   c.lastContact = new Date().toISOString().slice(0,10);
-  saveData(data);
+  await saveLeadToFirebase(c);
   toast('Stage updated to: '+stageInfo(newStage).label);
   viewContact(id);
   const activePage = document.querySelector('.page-section.active')?.id?.replace('page-','');
   if(activePage) renderPage(activePage);
 }
 
-function deleteContact(id) {
-  let data = getData();
-  data = data.filter(c=>c.id!==id);
-  saveData(data);
-  toast('Contact deleted');
+async function deleteContact(id) {
+  const c = getData().find(x=>x.id===id);
+  if(!c) return;
+  await deleteLeadFromFirebase(id);
   const activePage = document.querySelector('.page-section.active')?.id?.replace('page-','');
   if(activePage) renderPage(activePage);
 }
@@ -1348,9 +1415,12 @@ function saveSettings() {
   toast('Settings saved ✓');
 }
 
-function clearAllData() {
+async function clearAllData() {
   if(!confirm('Are you absolutely sure? All CRM data will be permanently deleted.')) return;
-  localStorage.removeItem(STORAGE_KEY);
+  const data = getData();
+  for(const c of data) {
+    await deleteLeadFromFirebase(c.id);
+  }
   toast('All data cleared','error');
   renderPage('dashboard');
 }
@@ -1402,8 +1472,16 @@ document.addEventListener('keydown',e=>{
 // ══════════════════════════════════════════════════════
 // INIT
 // ══════════════════════════════════════════════════════
-seedDemo();
-renderPage('dashboard');
+// Wait for Firebase then init
+function initCRM() {
+  if(window._db) {
+    seedDemo();
+    renderPage('dashboard');
+  } else {
+    setTimeout(initCRM, 200);
+  }
+}
+setTimeout(initCRM, 500);
 
 // ══════════════════════════════════════════════════════
 // n8n QUICK IMPORT — parse pasted notification and fill Add Lead form
