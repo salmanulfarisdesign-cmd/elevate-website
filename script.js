@@ -197,11 +197,27 @@ document.addEventListener('DOMContentLoaded', () => {
       // Build payload — field names match Google Sheets columns
       const v = (id) => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
       const payload = {
+        // Core fields — names match CRM internal field names
         name:        v('name'),
-        business:    v('business'),
+        biz:         v('business'),      // CRM uses 'biz', form uses 'business'
+        business:    v('business'),      // keep both for n8n compatibility
         phone:       v('phone'),
         email:       v('email'),
         message:     v('message'),
+        // CRM metadata fields
+        source:      'Website Form',
+        stage:       'new',
+        priority:    3,
+        value:       0,
+        notes:       '',
+        biztype:     '',
+        service:     '',
+        servicesActive: '',
+        testimonial: 'no',
+        consultDate: '',
+        lastContact: new Date().toISOString().slice(0,10),
+        dateAdded:   new Date().toISOString(),
+        // Extra context
         source_page: window.location.href,
         timestamp:   new Date().toISOString(),
       };
