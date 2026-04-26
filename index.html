@@ -3,14 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elevate · Digital Marketing for Local Businesses</title>
-<meta name="description" content="We help local restaurants, salons, and shops grow online with social media, SEO, and content. Plain English. Real results.">
+<title>Elevate Digital Agency · Grow Your Local Business Online</title>
+<meta name="description" content="We help local restaurants, salons, and shops in Kerala and the Gulf get found online — with social media, SEO, AI automation, and real results. No jargon. No fake promises.">
+
+<!-- OG Meta Tags -->
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://salmanulfarisdesign-cmd.github.io/elevate-website/">
+<meta property="og:title"       content="Elevate Digital Agency · Grow Your Local Business Online">
+<meta property="og:description" content="We help local restaurants, salons, and shops in Kerala and the Gulf get found online. No jargon. No fake promises.">
+<meta property="og:image"       content="https://salmanulfarisdesign-cmd.github.io/elevate-website/og-image.png">
+<meta name="twitter:card"       content="summary_large_image">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://salmanulfarisdesign-cmd.github.io/elevate-website/">
+
+<!-- Favicon placeholder -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230A1628'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Arial' font-weight='bold' font-size='18' fill='%2300C2A8'%3EE%3C/text%3E%3C/svg%3E">
+
+<!-- LocalBusiness Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Elevate Digital Agency",
+  "description": "Digital marketing agency helping local businesses in Kerala and the Gulf grow online through social media, SEO, AI automation, and brand identity.",
+  "url": "https://salmanulfarisdesign-cmd.github.io/elevate-website/",
+  "telephone": "+917736160446",
+  "email": "salmanulfarisdesign@gmail.com",
+  "founder": { "@type": "Person", "name": "Salmanul Faris" },
+  "address": { "@type": "PostalAddress", "addressRegion": "Kerala", "addressCountry": "IN" },
+  "areaServed": ["Kerala, India", "Gulf Region", "UAE"],
+  "priceRange": "Contact for pricing"
+}
+</script>
+
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- NAV -->
-<nav class="nav">
+<nav class="nav" id="mainNav">
   <div class="container">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">Elevate<span>.</span></a>
@@ -23,7 +55,7 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
       <a href="contact.html" class="btn btn-primary nav-cta pulse">Book Free Consultation</a>
-      <div class="hamburger" id="hamburger">
+      <div class="hamburger" id="hamburger" aria-label="Open menu" role="button" tabindex="0">
         <span></span><span></span><span></span>
       </div>
     </div>
@@ -31,7 +63,7 @@
 </nav>
 
 <!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
   <a href="index.html">Home</a>
   <a href="about.html">About</a>
   <a href="services.html">Services</a>
@@ -43,54 +75,63 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg-dots"></div>
-  <div class="hero-gradient"></div>
+  <!-- CSS animated gradient orbs (NO emoji) -->
+  <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
+  <div class="hero-dots" aria-hidden="true"></div>
+
   <div class="container">
-    <div class="hero-content" style="max-width:640px">
-      <p class="hero-eyebrow">Digital Marketing for Local Businesses</p>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Kerala &amp; Gulf · Local Business Growth</p>
       <h1 class="hero-title">
-        Grow Your Business Online —<br>
+        Your Local Business,<br>
+        Found Online —<br>
         <span class="accent">Without the Guesswork.</span>
       </h1>
-      <p class="hero-sub typewriter" data-text="We handle your social media, SEO, and content so you can focus on running your business." data-delay="1000">We handle your social media, SEO, and content so you can focus on running your business.</p>
+      <p class="hero-sub">
+        We help restaurants, salons, and shops in Kerala and the Gulf get more customers online — through social media, SEO, and AI tools. In plain English. With real results.
+      </p>
       <div class="hero-ctas">
         <a href="contact.html" class="btn btn-primary pulse">Book a Free Consultation</a>
         <a href="services.html" class="btn btn-outline">See How It Works</a>
       </div>
     </div>
   </div>
-  <!-- Floating social icons -->
-  <div class="hero-floating-icons">
-    <div class="float-icon">📸</div>
-    <div class="float-icon">🔵</div>
-    <div class="float-icon">💚</div>
-    <div class="float-icon">📊</div>
-    <div class="float-icon">⭐</div>
-  </div>
 </section>
 
-<!-- TRUST STRIP -->
-<section class="section-dark" style="padding:0 0 60px">
+<!-- TRUST STRIP — honest data only -->
+<section class="section-sm" style="background:var(--navy);padding-top:0;padding-bottom:72px">
   <div class="container">
+
+    <!-- Honesty notice -->
+    <div class="honesty-banner reveal" style="max-width:680px;margin:0 auto 32px">
+      <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <span>We provide real data from our current projects. Nothing is invented. As we grow, our numbers will be updated here.</span>
+    </div>
+
     <div class="trust-strip reveal">
+      <!-- Year in operation — calculated from real date -->
       <div class="trust-item">
-        <span class="trust-num"><span class="counter" data-target="50" data-suffix="+">0</span></span>
-        <div class="trust-label">Local Businesses Helped</div>
+        <span class="trust-num" id="yearsActive">—</span>
+        <div class="trust-label">Year Founded</div>
       </div>
-      <div class="trust-divider"></div>
+      <!-- 100% local focus — always true -->
       <div class="trust-item">
-        <span class="trust-num"><span class="counter" data-target="4.9" data-suffix="/5">0</span></span>
-        <div class="trust-label">Average Client Rating</div>
-      </div>
-      <div class="trust-divider"></div>
-      <div class="trust-item">
-        <span class="trust-num"><span class="counter" data-target="3" data-suffix="+">0</span></span>
-        <div class="trust-label">Years Helping Local Businesses</div>
-      </div>
-      <div class="trust-divider"></div>
-      <div class="trust-item">
-        <span class="trust-num"><span class="counter" data-target="100" data-suffix="%">0</span></span>
+        <span class="trust-num">100%</span>
         <div class="trust-label">Local Business Focus</div>
+      </div>
+      <!-- Honest client count — starts from zero -->
+      <div class="trust-item honest">
+        <span class="trust-num" style="font-size:22px;color:rgba(255,255,255,0.3)">Building</span>
+        <div class="trust-label">Businesses Helped</div>
+        <p class="trust-honest-msg">First clients in progress</p>
+      </div>
+      <!-- Honest rating — no fake 4.9 -->
+      <div class="trust-item honest">
+        <span class="trust-num" style="font-size:22px;color:rgba(255,255,255,0.3)">Coming</span>
+        <div class="trust-label">Client Reviews</div>
+        <p class="trust-honest-msg">Collecting first verified reviews</p>
       </div>
     </div>
   </div>
@@ -102,118 +143,121 @@
     <div class="max-720 text-center">
       <p class="section-label reveal">The Problem We Solve</p>
       <h2 class="reveal reveal-delay-1">Running a business is <span class="text-teal">hard enough.</span></h2>
-      <p class="reveal reveal-delay-2" style="font-size:18px;color:rgba(255,255,255,0.6);margin-top:16px;line-height:1.7">
-        You shouldn't have to figure out Instagram, Google, and marketing on top of everything else. Most agencies make it more confusing — not less. We're different. We speak plain English, show you real results, and handle everything so you can focus on your customers.
+      <p class="reveal reveal-delay-2" style="font-size:18px;color:rgba(255,255,255,0.6);margin-top:20px;line-height:1.8">
+        You shouldn't have to figure out Instagram, Google, and AI tools on top of running your business. We handle the digital side — clearly, simply, and in plain language. Success looks like more calls, more walk-ins, and more enquiries.
       </p>
     </div>
   </div>
 </section>
 
-<!-- SERVICES OVERVIEW -->
+<!-- SERVICES OVERVIEW — all 5 real services -->
 <section class="section section-mid">
   <div class="container">
     <div class="text-center mb-48">
-      <p class="section-label reveal">What We Do</p>
-      <h2 class="reveal reveal-delay-1">Three Services. <span class="text-teal">Zero Confusion.</span></h2>
-      <p class="text-muted mt-16 reveal reveal-delay-2" style="font-size:16px;">All explained in plain English. No jargon, no hidden packages.</p>
+      <p class="section-label reveal">What We Offer</p>
+      <h2 class="reveal reveal-delay-1">Five Services. <span class="text-teal">All in Plain English.</span></h2>
+      <p class="text-muted mt-16 reveal reveal-delay-2" style="font-size:16px">Clear work, explained plainly, priced honestly.</p>
     </div>
     <div class="grid-3">
+      <!-- 01 AI Automation -->
       <div class="card-glass reveal reveal-delay-1">
-        <div class="service-icon icon-blue">📱</div>
-        <h3 style="margin-bottom:12px">Social Media Management</h3>
-        <p class="text-muted" style="font-size:15px;margin-bottom:20px">We post, engage, and grow your Instagram and Facebook so more local customers find you — every week.</p>
-        <a href="services.html#smm" class="text-teal" style="font-size:14px;font-weight:600">Learn more →</a>
+        <div class="service-icon icon-teal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <h3 style="margin-bottom:10px">AI Automation</h3>
+        <p class="text-muted" style="font-size:14px;margin-bottom:20px;line-height:1.7">Automate your repetitive business tasks. Generate leads and manage follow-ups — no technical knowledge needed from your side.</p>
+        <a href="services.html#ai-automation" class="text-teal" style="font-size:14px;font-weight:700">Learn more →</a>
       </div>
+      <!-- 02 Social Media -->
       <div class="card-glass reveal reveal-delay-2">
-        <div class="service-icon icon-teal">🔍</div>
-        <h3 style="margin-bottom:12px">Local SEO</h3>
-        <p class="text-muted" style="font-size:15px;margin-bottom:20px">We get your business to show up on Google when people nearby search for what you offer. More visibility. More calls.</p>
-        <a href="services.html#seo" class="text-teal" style="font-size:14px;font-weight:600">Learn more →</a>
+        <div class="service-icon icon-blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zM17.5 6.5h.01"/></svg>
+        </div>
+        <h3 style="margin-bottom:10px">Social Media Management</h3>
+        <p class="text-muted" style="font-size:14px;margin-bottom:20px;line-height:1.7">We manage your Instagram and Facebook — content, posting schedules, and engagement. Every week, handled for you.</p>
+        <a href="services.html#social-media" class="text-teal" style="font-size:14px;font-weight:700">Learn more →</a>
       </div>
+      <!-- 03 Local SEO -->
       <div class="card-glass reveal reveal-delay-3">
-        <div class="service-icon icon-amber">✍️</div>
-        <h3 style="margin-bottom:12px">Content Creation</h3>
-        <p class="text-muted" style="font-size:15px;margin-bottom:20px">We create posts, captions, and visuals so you never run out of things to share online. Consistent, professional, effortless.</p>
-        <a href="services.html#content" class="text-teal" style="font-size:14px;font-weight:600">Learn more →</a>
+        <div class="service-icon icon-amber">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </div>
+        <h3 style="margin-bottom:10px">Local SEO &amp; Google Presence</h3>
+        <p class="text-muted" style="font-size:14px;margin-bottom:20px;line-height:1.7">Get your business found when locals search for what you offer. Google Maps, local rankings, and more visibility.</p>
+        <a href="services.html#local-seo" class="text-teal" style="font-size:14px;font-weight:700">Learn more →</a>
+      </div>
+      <!-- 04 Brand Identity -->
+      <div class="card-glass reveal reveal-delay-1">
+        <div class="service-icon icon-rose">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <h3 style="margin-bottom:10px">Brand Identity Design</h3>
+        <p class="text-muted" style="font-size:14px;margin-bottom:20px;line-height:1.7">Logo, colour palette, and a complete digital presence kit — so your business looks professional everywhere online.</p>
+        <a href="services.html#brand-identity" class="text-teal" style="font-size:14px;font-weight:700">Learn more →</a>
+      </div>
+      <!-- 05 Business Consultation -->
+      <div class="card-glass reveal reveal-delay-2">
+        <div class="service-icon icon-violet">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3 style="margin-bottom:10px">Business Consultation &amp; Education</h3>
+        <p class="text-muted" style="font-size:14px;margin-bottom:20px;line-height:1.7">We teach you how to run a modern business with AI tools. Not just execute — we educate. You stay in control.</p>
+        <a href="services.html#consultation" class="text-teal" style="font-size:14px;font-weight:700">Learn more →</a>
+      </div>
+      <!-- CTA card -->
+      <div class="card-glass reveal reveal-delay-3" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border:1.5px dashed rgba(0,194,168,0.3);background:rgba(0,194,168,0.04)">
+        <p style="color:rgba(255,255,255,0.5);font-size:14px;margin-bottom:20px;line-height:1.7">Not sure which service fits your business? Let's figure it out together — for free.</p>
+        <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center">Book Free Consultation</a>
       </div>
     </div>
-    <div class="text-center mt-40">
-      <a href="services.html" class="btn btn-outline">View All Services</a>
+    <div class="text-center mt-48">
+      <a href="services.html" class="btn btn-outline">View All Services in Detail</a>
     </div>
   </div>
 </section>
 
-<!-- PORTFOLIO PREVIEW -->
+<!-- PORTFOLIO PREVIEW — honest empty state -->
 <section class="section section-light">
   <div class="container">
     <div class="text-center mb-48">
-      <p class="section-label reveal">Results We've Delivered</p>
-      <h2 class="reveal reveal-delay-1" style="color:var(--text-dark)">Real Businesses. <span style="color:var(--blue)">Real Results.</span></h2>
-      <p class="reveal reveal-delay-2" style="color:var(--text-muted);margin-top:16px">Don't take our word for it — here's what we've actually delivered.</p>
+      <p class="section-label reveal">Our Work</p>
+      <h2 class="reveal reveal-delay-1" style="color:var(--text-dark)">Real Businesses. <span style="color:var(--teal)">Real Results.</span></h2>
+      <p class="reveal reveal-delay-2" style="color:var(--text-muted);margin-top:16px">We only show work we've actually done. Here's where we stand right now.</p>
     </div>
-    <div class="grid-3">
-      <div class="card-light reveal reveal-delay-1">
-        <span class="tag tag-blue" style="margin-bottom:16px">Restaurant · Social Media</span>
-        <div class="result-badge" style="color:var(--blue);background:rgba(26,92,255,0.1)">+120% Instagram reach</div>
-        <p style="color:var(--text-mid);font-size:14px;margin-top:12px">Local café went from 340 to 890 followers in 60 days. Engagement up 4× and two new bookings per week from Instagram alone.</p>
-        <p style="color:var(--text-muted);font-size:12px;margin-top:12px;font-weight:600">60 days</p>
-      </div>
-      <div class="card-light reveal reveal-delay-2">
-        <span class="tag tag-teal" style="margin-bottom:16px">Salon · Local SEO</span>
-        <div class="result-badge">Page 1 Google</div>
-        <p style="color:var(--text-mid);font-size:14px;margin-top:12px">Hair salon went from invisible to first page Google results for local searches. Phone enquiries up 65% within 2 months.</p>
-        <p style="color:var(--text-muted);font-size:12px;margin-top:12px;font-weight:600">45 days</p>
-      </div>
-      <div class="card-light reveal reveal-delay-3">
-        <span class="tag tag-blue" style="margin-bottom:16px">Retail · Content</span>
-        <div class="result-badge" style="color:var(--blue);background:rgba(26,92,255,0.1)">+85% profile visits</div>
-        <p style="color:var(--text-mid);font-size:14px;margin-top:12px">Independent clothing shop doubled WhatsApp enquiries and foot traffic with consistent, branded monthly content.</p>
-        <p style="color:var(--text-muted);font-size:12px;margin-top:12px;font-weight:600">90 days</p>
+
+    <!-- HONEST EMPTY STATE — replace with real case studies as they come in -->
+    <div class="honest-state-light reveal">
+      <span class="icon">🏗️</span>
+      <h3>Our portfolio is being built.</h3>
+      <p>We're currently working with our first clients. Real case studies with real numbers will be published here as projects are completed. We'd rather show you nothing than show you something fake.</p>
+      <div style="margin-top:28px">
+        <a href="contact.html" class="btn btn-outline-dark">Be One of Our First Clients</a>
       </div>
     </div>
+
     <div class="text-center mt-40">
-      <a href="portfolio.html" class="btn btn-outline-dark">See All Case Studies →</a>
+      <a href="portfolio.html" class="btn btn-outline-dark">View Portfolio Page</a>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIAL SNIPPET -->
+<!-- TESTIMONIALS PREVIEW — honest empty state -->
 <section class="section section-dark">
   <div class="container">
     <div class="text-center mb-48">
       <p class="section-label reveal">What Clients Say</p>
-      <h2 class="reveal reveal-delay-1">They said it better <span class="text-teal">than we could.</span></h2>
+      <h2 class="reveal reveal-delay-1">We let our clients <span class="text-teal">do the talking.</span></h2>
     </div>
-    <div class="grid-2 max-720" style="max-width:840px;margin:0 auto">
-      <div class="testimonial-card reveal-left" style="background:rgba(255,255,255,0.05);border:1px solid var(--border)">
-        <div class="stars mb-12">★★★★★</div>
-        <p class="testimonial-quote" style="color:rgba(255,255,255,0.75)">
-          "Elevate was completely different. Salman explained everything clearly and within 6 weeks my Instagram was getting more enquiries than my walk-ins."
-        </p>
-        <div class="testimonial-author">
-          <div class="author-avatar" style="background:var(--blue)">AR</div>
-          <div>
-            <div class="author-name" style="color:var(--white)">Aisha Rahman</div>
-            <div class="author-biz" style="color:rgba(255,255,255,0.4)">Salon Owner</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card reveal-right" style="background:rgba(255,255,255,0.05);border:1px solid var(--border)">
-        <div class="stars mb-12">★★★★★</div>
-        <p class="testimonial-quote" style="color:rgba(255,255,255,0.75)">
-          "I was on page 3 of Google. Now I'm in the top 3 for my area. Calls went up massively. I wish I'd found them sooner."
-        </p>
-        <div class="testimonial-author">
-          <div class="author-avatar" style="background:var(--teal);color:var(--navy)">TA</div>
-          <div>
-            <div class="author-name" style="color:var(--white)">Tariq's Auto Services</div>
-            <div class="author-biz" style="color:rgba(255,255,255,0.4)">Local Business Owner</div>
-          </div>
-        </div>
-      </div>
+
+    <!-- HONEST EMPTY STATE -->
+    <div class="honest-state reveal" style="max-width:600px;margin:0 auto">
+      <span class="icon">⭐</span>
+      <h3>Collecting our first verified reviews.</h3>
+      <p>Once a client completes a project with us, they're invited to leave a real review. Those reviews will appear here — unedited and unfiltered. Check back soon.</p>
     </div>
+
     <div class="text-center mt-40">
-      <a href="testimonials.html" class="btn btn-outline">Read More Reviews</a>
+      <a href="testimonials.html" class="btn btn-outline">See Testimonials Page</a>
     </div>
   </div>
 </section>
@@ -225,11 +269,14 @@
       <p class="section-label reveal">Get Started Today</p>
       <h2 class="reveal reveal-delay-1">Ready to grow <span class="text-teal">your business?</span></h2>
       <p class="reveal reveal-delay-2" style="color:rgba(255,255,255,0.6);font-size:17px;margin-top:16px;margin-bottom:36px">
-        Book a free 20-minute consultation. No pressure. No confusing proposals. Just a conversation.
+        Book a free 20-minute consultation. No pressure. No confusing proposals. Just a real conversation about your business.
       </p>
       <div class="flex-center reveal reveal-delay-3">
-        <a href="contact.html" class="btn btn-primary pulse" style="font-size:16px;padding:16px 36px">Book Free Consultation</a>
-        <a href="https://wa.me/917736160446?text=Hi%21%20I%27d%20like%20to%20learn%20more%20about%20your%20services." target="_blank" class="btn btn-teal">Or chat on WhatsApp →</a>
+        <a href="contact.html" class="btn btn-primary pulse">Book Free Consultation</a>
+        <a href="https://wa.me/917736160446?text=Hi!%20I'd%20like%20to%20learn%20more%20about%20Elevate." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp whatsapp-tracked">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chat on WhatsApp
+        </a>
       </div>
     </div>
   </div>
@@ -241,7 +288,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="index.html" class="nav-logo">Elevate<span style="color:var(--teal)">.</span></a>
-        <p>Helping local businesses grow online — in plain English. Social media, SEO, and content that actually gets results.</p>
+        <p>Helping local businesses in Kerala and the Gulf grow online — in plain English. Social media, SEO, AI automation, and real results.</p>
       </div>
       <div class="footer-col">
         <h4>Pages</h4>
@@ -257,28 +304,42 @@
       <div class="footer-col">
         <h4>Get in Touch</h4>
         <ul>
-          <li><a href="https://wa.me/917736160446" target="_blank">WhatsApp Us</a></li>
+          <li><a href="https://wa.me/917736160446" target="_blank" rel="noopener noreferrer">WhatsApp: +91 77361 60446</a></li>
           <li><a href="mailto:salmanulfarisdesign@gmail.com">salmanulfarisdesign@gmail.com</a></li>
           <li><a href="contact.html">Book Free Consultation</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 Elevate Digital Agency. All rights reserved.</p>
-      <div class="footer-contact">
-        <a href="https://wa.me/917736160446" target="_blank">WhatsApp</a>
+      <p>© <span id="footerYear"></span> Elevate Digital Agency. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="https://wa.me/917736160446" target="_blank" rel="noopener noreferrer">WhatsApp</a>
         <a href="mailto:salmanulfarisdesign@gmail.com">Email</a>
+        <a href="contact.html">Contact</a>
       </div>
     </div>
   </div>
 </footer>
 
 <!-- WhatsApp FAB -->
-<a href="https://wa.me/917736160446?text=Hi%21%20I%27d%20like%20to%20learn%20more%20about%20your%20services." target="_blank" class="whatsapp-fab whatsapp-tracked" title="Chat on WhatsApp">
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+<a href="https://wa.me/917736160446?text=Hi!%20I'd%20like%20to%20learn%20more%20about%20Elevate." target="_blank" rel="noopener noreferrer" class="whatsapp-fab whatsapp-tracked" title="Chat on WhatsApp" aria-label="Chat with Elevate on WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   <span class="whatsapp-tooltip">Chat with us on WhatsApp</span>
 </a>
 
 <script src="script.js"></script>
+<script>
+  // Auto-calculate years / year active
+  const founded = new Date('2025-01-01'); // Update to real founding date
+  const now = new Date();
+  const yearsEl = document.getElementById('yearsActive');
+  if (yearsEl) {
+    const year = now.getFullYear();
+    yearsEl.textContent = year;
+  }
+  // Footer year
+  const footerYearEl = document.getElementById('footerYear');
+  if (footerYearEl) footerYearEl.textContent = now.getFullYear();
+</script>
 </body>
 </html>

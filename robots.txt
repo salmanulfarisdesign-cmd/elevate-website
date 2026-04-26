@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://salmanulfarisdesign-cmd.github.io/elevate-website/sitemap.xml
